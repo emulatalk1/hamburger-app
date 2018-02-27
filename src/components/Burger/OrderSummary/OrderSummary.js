@@ -12,6 +12,7 @@ const orderSummary = (props) => {
                 </li>
             )
         });
+    console.log("[OrderSummary]");
     return (
         <Aux>
             <h3>Your order</h3>
