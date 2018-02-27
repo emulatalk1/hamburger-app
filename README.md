@@ -1,3 +1,3 @@
 This is a example of ReactJs to learning about Component, lifecycle of component,...
 
-![Image of architecture]()
+![Image of architecture](https://raw.githubusercontent.com/emulatalk1/hamburger-app/master/Screen%20Shot%202018-02-27%20at%2014.55.13.png)
