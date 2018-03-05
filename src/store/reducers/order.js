@@ -18,6 +18,7 @@ const reducer = (state = initialState, action) => {
                 ...action.orderData,
                 id: action.orderId
             };
+            console.log(state.orders.concat(newOrder));
             return {
                 ...state,
                 loading: false,

@@ -5,4 +5,4 @@ export {
 } from './burgerBuilder';
 export {
     purchaseBurger
-} from './burgerBuilder';
+} from './order';
