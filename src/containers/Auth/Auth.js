@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
@@ -107,6 +108,7 @@ class Auth extends Component {
                 config: this.state.controls[key]
             })
         }
+
         let form = formElementArray.map(formElement => (
             <Input
                 key={formElement.id}
@@ -118,16 +120,25 @@ class Auth extends Component {
                 touched={formElement.config.touched}
                 changed={(event) => this.inputChangedHandler(event, formElement.id)} />
         ))
+
         if (this.props.loading) {
             form = <Spinner />
         }
+
         let errorMessage = null;
-        console.log(this.props.error);
+
         if (this.props.error) {
             errorMessage = <p>{this.props.error.message}</p>
         }
+
+        let authRedirect = <Redirect to="/" />;
+        if (!this.props.isAuthenticated) {
+            authRedirect = null;
+        }
+
         return (
             <div className={classes.Auth}>
+                {authRedirect}
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
@@ -144,7 +155,8 @@ class Auth extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuthenticated: state.auth.token !== null
     }
 }
 
